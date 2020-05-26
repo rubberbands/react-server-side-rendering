@@ -1,26 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { renderRoutes } from 'react-router-config';
+import { Switch, NavLink } from 'react-router-dom';
+import Routes from './routes';
+import Home from './Home';
+import Posts from './Posts';
+import Todos from './Todos';
+import NotFound from './NotFound';
 
-function App() {
+export default props => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+      <div>
+        <ul>
+          <li>
+            <NavLink to="/">Home</NavLink>
+          </li>
+          <li>
+            <NavLink to="/todos">Todos</NavLink>
+          </li>
+          <li>
+            <NavLink to="/posts">Posts</NavLink>
+          </li>
+        </ul>
 
-export default App;
+        <Switch>
+            {renderRoutes(Routes)}
+        </Switch>
+      </div>
+  );
+};
